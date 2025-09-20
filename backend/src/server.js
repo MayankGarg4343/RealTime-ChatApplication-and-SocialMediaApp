@@ -9,7 +9,7 @@ dotenv.config(); // we have to eable this method to read the properties.
 const app = express()
 const PORT = process.env.PORT;
 
-
+app.use(express.json()); // if we do not write this then values in the route may be defined undefined.
 app.use("/api/auth",authRoutes);
 
 app.listen(PORT,()=>{
