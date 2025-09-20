@@ -12,7 +12,7 @@ export async function signup(req,res){
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if(!emailPattern.test(email)){
-            return res.status(400).json({})
+            return res.status(400).json({ message: "Invalid Email format"});
         }
          
     } catch(error){
