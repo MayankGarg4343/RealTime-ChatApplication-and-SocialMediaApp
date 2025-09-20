@@ -21,6 +21,10 @@ export async function signup(req,res){
         if(existingUser){
             return res.status(400).json({message: "email already exist, please use a different email"})
         }
+
+        const idx = Math.floor(Math.random()*100)+1;
+        const randomPic = `https://avatar.iran.liara.run/public/${idx}.png`
+        
          
     } catch(error){
 
