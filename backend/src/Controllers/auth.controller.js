@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import jwt from "jsonwebtoken";
 
 export async function signup(req,res){
     const {email,password,fullName} = req.body;
@@ -24,7 +25,17 @@ export async function signup(req,res){
 
         const idx = Math.floor(Math.random()*100)+1;
         const randomPic = `https://avatar.iran.liara.run/public/${idx}.png`
-        
+
+        const newUser = new User.create({
+            email,
+            fullName,
+            password,
+            profilePic: randomPic,
+        })
+
+        const token = jwt.sign({userId:newUser._id},process.env.JWT_SECRET_KEY,{
+            expiresIn:"7d"
+        })
          
     } catch(error){
 
