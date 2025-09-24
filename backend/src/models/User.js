@@ -52,8 +52,6 @@ const userSchema = new mongoose.Schema(
 );
 // it tells createdAt, updatedAt
 
-const User = mongoose.model("User", userSchema);
-
 // pre hook we want to encrypt the password.
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -65,5 +63,8 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
+
+const User = mongoose.model("User", userSchema);
+
 
 export default User;

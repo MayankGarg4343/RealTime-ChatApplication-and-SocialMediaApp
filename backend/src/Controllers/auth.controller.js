@@ -26,7 +26,7 @@ export async function signup(req,res){
         const idx = Math.floor(Math.random()*100)+1;
         const randomPic = `https://avatar.iran.liara.run/public/${idx}.png`
 
-        const newUser = new User.create({
+        const newUser = await User.create({
             email,
             fullName,
             password,
@@ -49,7 +49,8 @@ export async function signup(req,res){
         res.status(201).json({success:true, user:newUser})
          
     } catch(error){
-
+        console.log("error in server controller",error);
+        res.status(500).json({message:"Internal server error"});
     }
 }
 export async function login(req,res){
