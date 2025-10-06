@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-const userSchema = new mongoose.Schema(
+import bcrypt from "bcryptjs";// imported bcrypt module.
+const userSchema = new mongoose.Schema( // drwn the schema for the sign up.
   {
     fullName: {
       type: String,
