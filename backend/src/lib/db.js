@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import mongoose from "mongoose"; // imported the mongoose module.
+import dotenv from "dotenv"; // imported the dotenv module.
 
 dotenv.config(); // loads the environment variables.
 export const connectDB = async ()=>{

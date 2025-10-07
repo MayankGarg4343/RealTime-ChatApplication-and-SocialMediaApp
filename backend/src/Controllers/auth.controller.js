@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"; // imported the jwt token.
 
 export async function signup(req,res){
     const {email,password,fullName} = req.body;
@@ -54,7 +54,7 @@ export async function signup(req,res){
     }
 }
 
-export async function login(req,res){
+export async function login(req,res){ // logic for the login route.
     try{
         const {email,password} = req.body;
         if(!email || !password){
