@@ -8,4 +8,4 @@ if(!apiKey || !apiSecret){
     console.log("Stream API key or secret is missing");
 }
 
-const streamClient = StreamChat.getInstance(apiKey, apiSecret); // by this we can communicate with the Stream. 
+const streamClient = StreamChat.getInstance(apiKey, apiSecret); // by this we can communicate with the Stream platform. 
