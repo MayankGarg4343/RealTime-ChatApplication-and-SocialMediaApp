@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema( // drwn the schema for the sign up.
 // it tells createdAt, updatedAt
 
 // pre hook we want to encrypt the password.
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) { // saving the data.
   if (!this.isModified("password")) return next();
   try {
     const salt = await bcrypt.genSalt(10);
