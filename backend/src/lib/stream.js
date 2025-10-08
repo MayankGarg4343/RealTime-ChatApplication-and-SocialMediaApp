@@ -4,7 +4,7 @@ import "dotenv/config"
 const apiKey = process.env.STREAM_API_KEY
 const apiSecret = process.env.STREAM_API_SECRET
 
-if(!apiKey || !apiSecret){
+if(!apiKey || !apiSecret){ // checking that whether the keys are present or not.
     console.log("Stream API key or secret is missing");
 }
 
