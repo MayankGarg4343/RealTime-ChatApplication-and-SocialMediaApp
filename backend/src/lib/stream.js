@@ -9,3 +9,13 @@ if(!apiKey || !apiSecret){
 }
 
 const streamClient = StreamChat.getInstance(apiKey, apiSecret); // by this we can communicate with the Stream platform. 
+
+export const upsertStreamUser = async (userData)=>{
+    try{
+        await streamClient.upsertUsers([userData]); // upsert here used to create the user and if it already exists update the info.
+        return userData
+    } catch(error){
+        console.error("Error upserting stream user:", error);
+    }
+};
+
