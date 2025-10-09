@@ -9,7 +9,6 @@ if(!apiKey || !apiSecret){ // checking that whether the keys are present or not.
 }
 
 const streamClient = StreamChat.getInstance(apiKey, apiSecret); // by this we can communicate with the Stream platform. 
-<<<<<<< HEAD
 
 export const upsertStreamUser = async (userData)=>{
     try{
@@ -19,6 +18,3 @@ export const upsertStreamUser = async (userData)=>{
         console.error("Error upserting stream user:", error);
     }
 };
-
-=======
->>>>>>> fb760885ddba74f45a9ffdd8994cdc7c612536e0
