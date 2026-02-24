@@ -7,4 +7,6 @@ router.post("/signup", signup);
 router.post("/login", login); 
 router.post("/logout",logout);
 
+// creating the route for onboarding.
+
 export default router;
