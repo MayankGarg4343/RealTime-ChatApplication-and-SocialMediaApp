@@ -2,7 +2,7 @@
 backend/.env
 
 # dependencies
-node_modules/
+backend/node_modules/
 
 # system files
 .DS_Store
