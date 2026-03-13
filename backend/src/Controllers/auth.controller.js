@@ -3,8 +3,8 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken"; // imported the jwt token.
 
 export async function signup(req,res){
-    const {email,password,fullName} = req.body;
 
+    const {email,password,fullName} = req.body;
     try{
         if(!email || !password || !fullName){
             return res.status(400).json({message: "All fields are required"});
@@ -124,8 +124,21 @@ export async function onboard(req,res){
         const updateUser = await User.findByIdAndUpdate(userId,{
             ...req.body,
             isOnborded:true
-        },{new:true}) 
+        },{new:true});
+
         if(!updateUser) return res.status(404).json({message:"user not found"});
+
+        try {
+            await upsertStreamUser({
+            id: updateUser._id.toString(),
+            name: updateUser.fullName,
+            image: updateUser.profilePic || "", 
+        })
+        console.log(`stream user updated after onboarding for ${updateUser.fullName}`);
+        } catch (streamError) {
+            console.log('error updating stream user during onboarding',streamError.message);
+        }
+
         res.status(200).json({success:true,user:updateUser});
     }catch(error){
         console.log("onboarding error: ",error);

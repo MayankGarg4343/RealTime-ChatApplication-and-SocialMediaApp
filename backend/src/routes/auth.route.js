@@ -12,3 +12,4 @@ router.post("/logout",logout);
 router.post("/onboarding",protectRoute,onboard);
 
 export default router;
+ 
