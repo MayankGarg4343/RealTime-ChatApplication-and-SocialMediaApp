@@ -1,5 +1,4 @@
 # environment variables
-backend/.env
 
 # dependencies
 node_modules/

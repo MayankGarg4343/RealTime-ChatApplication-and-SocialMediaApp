@@ -13,8 +13,9 @@ const PORT = process.env.PORT;
 app.use(express.json()); // if we do not write this then values in the route may be defined undefined.
 app.use(cookieParser());
 app.use("/api/auth",authRoutes);
-
-
+app.get("/", (req, res) => {
+  res.send("Server running");
+});
 app.listen(PORT,()=>{ // server listening port
     console.log(`server is running on port: ${PORT}`);
     connectDB();

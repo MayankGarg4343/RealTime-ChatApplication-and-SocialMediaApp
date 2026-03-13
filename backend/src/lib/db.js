@@ -10,3 +10,4 @@ export const connectDB = async ()=>{
         process.exit(1) // something went wrong 1 means failure.
     }
 }
+ 
