@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-// we have created the protect route and it is being applied before the onboarding route.
+// we have created the protect route and it is being applied before the onboarding route. 
 
 export const protectRoute = async (req,res,next)=>{
     try{
