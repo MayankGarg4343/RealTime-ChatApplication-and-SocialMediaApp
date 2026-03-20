@@ -14,7 +14,7 @@ router.post("/logout",logout); // post method are for the operaton which are bei
 // creating the route for onboarding.
 router.post("/onboarding",protectRoute,onboard);
 
-router.get("/me",protectRoute,(req,res)=>{
+router.get("/me",protectRoute,(req,res)=>{ 
     res.status(200).json({
         success:true,
         user: req.user
