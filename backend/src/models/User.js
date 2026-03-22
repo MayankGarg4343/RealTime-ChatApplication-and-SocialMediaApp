@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema( // drawn the schema for the sign up.
       type: String,
       default: "",
     },
-    isOnborded: {
+    isOnboarded: {
       type: Boolean,
       default: false,
     },
