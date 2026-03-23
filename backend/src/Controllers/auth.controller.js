@@ -25,7 +25,7 @@ export async function signup(req,res){
         }
 
         const idx = Math.floor(Math.random()*100)+1;
-        const randomPic = `https://api.dicebear.com/9.x/toon-head/svg?scale=${idx}`
+        const randomPic = `https://api.dicebear.com/9.x/initials/svg?seed=${idx}`
 
         const newUser = await User.create({
             email,
