@@ -30,7 +30,7 @@ function Navbar() {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link to={"/notifications"}>
               <button>
-                <BellIcon className="h-6 w-6 text-base-content opacity-70"/>
+                <BellIcon className="h-6 w-6 text-base-content opacity-70 mt-2"/>
               </button>
             </Link>
           </div>
