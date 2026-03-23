@@ -3,6 +3,7 @@ import { ShipWheelIcon } from "lucide-react";
 import { Link } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { signup } from "../lib/api";
+import useSignup from "../hooks/useSignup";
 
 const SignUpPage = () => {
   const [signupData, setSignupData] = useState({
@@ -11,12 +12,7 @@ const SignUpPage = () => {
     password: "",
   });
 
-  const queryClient = useQueryClient();
-
-  const {mutate:signupMutation,isPending,error} = useMutation({
-    mutationFn: signup,
-    onSuccess: ()=>queryClient.invalidateQueries({queryKey:["authUser"]}),
-  });
+  const {isPending, error, signupMutation} = useSignup();
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -28,7 +24,6 @@ const SignUpPage = () => {
       <div className="border border-primary/25 flex flex-col lg:flex-row w-full max-w-5xl mx-auto bg-base-100 rounded-xl shadow-lg overflow-hidden">
         <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
           <div className="mb-4 flex item-center justify-start gap-2">
-            <ShipWheelIcon className="size-9 text-primary" />
             <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider">
               Stremo
             </span>
