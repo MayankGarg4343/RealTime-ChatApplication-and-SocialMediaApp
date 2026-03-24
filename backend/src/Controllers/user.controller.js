@@ -10,10 +10,10 @@ export async function getRecommendedUsers(req, res) {
       $and: [
         { _id: { $ne: currentUserId } }, // exclude the current user.
         { _id: { $nin: currentUser.friends } }, // exclude the current user friends.
-        { onboarded: true },
+        { isOnboarded: true },
       ],
     });
-    res.status(200).json(recommendedUsers);
+    res.status(200).json(recommendedUsers); 
   } catch (error) {
     console.error("Error in getRecommendedUsers controller", error.message);
     res.status(500).json({ message: "Internal server error" });
@@ -102,7 +102,7 @@ export async function acceptFriendRequest(req, res) {
         .status(403)
         .json({ message: "you are not authorized to accept this request" });
     }
-    friendRequest.status = "Accepted";
+    friendRequest.status = "accepted";
     await friendRequest.save();
 
     // add each user to the others's friend array
@@ -120,7 +120,7 @@ export async function acceptFriendRequest(req, res) {
       message: "friend request accepted",
     });
   } catch (error) {
-    console.error("error in scceptfriendrequest controller", error.message);
+    console.error("error in acceptfriendrequest controller", error.message);
     res.status(500).json({
       message: "Internal server error",
     });
@@ -134,8 +134,8 @@ export async function getFriendRequest(req,res){
             status: "pending",
         }).populate("sender","fullName profilePic nativeLanguage learningLanguage");
 
-        const acceptedReq = await friendRequest.find({
-            recipient: req.user.id,
+        const acceptedReq = await FriendRequest.find({
+            sender: req.user.id,
             status: "accepted",
         }).populate("recipient","fullName profilePic");
 
@@ -150,7 +150,7 @@ export async function getFriendRequest(req,res){
 export async function getOutGoingFriendRequest(req,res){
     try{
         const outgoingRequest = await FriendRequest.find({
-            sender: ReadableByteStreamController.user.id,
+            sender: req.user.id,
             status:"pending",
         }).populate("recipient","fullName profilePic nativeLanguage learningLanguage");
         res.status(200).json(outgoingRequest);

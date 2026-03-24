@@ -1,5 +1,6 @@
 # environment variables
 backend/.env
+frontend/.env
 
 # dependencies
 node_modules/

@@ -21,8 +21,8 @@ app.use(express.json()); // if we do not write this then values in the route may
 app.use(cookieParser());
 
 app.use("/api/auth",authRoutes);
-app.use("/api/user",userRoutes);
-app.use("/auth/chat",chatRoutes);
+app.use("/api/users",userRoutes);
+app.use("/api/chat",chatRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server running");
