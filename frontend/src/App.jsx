@@ -18,7 +18,7 @@ const App = () => {
   // tanstack query
 
   const { isLoading, authUser } = useAuthUser();
-  const {theme, setTheme}=useThemeStore();
+  const { theme, setTheme } = useThemeStore();
 
   const isAuthenticated = Boolean(authUser);
   const isOnboarded = authUser?.isOnboarded;
@@ -47,37 +47,55 @@ const App = () => {
         />
         <Route
           path="/signup"
-          element={!isAuthenticated ? <SignUpPage /> : <Navigate to={isOnboarded?"/":"/onboarding"} />}
+          element={
+            !isAuthenticated ? (
+              <SignUpPage />
+            ) : (
+              <Navigate to={isOnboarded ? "/" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/login"
-          element={!isAuthenticated ? <LoginPage /> : <Navigate to={isOnboarded?"/":"/onboarding"} />}
+          element={
+            !isAuthenticated ? (
+              <LoginPage />
+            ) : (
+              <Navigate to={isOnboarded ? "/" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/notifications"
           element={
             isAuthenticated && isOnboarded ? (
               <Layout showSidebar={true}>
-                <NotificationsPage/>
+                <NotificationsPage />
               </Layout>
-            ):(
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"}/>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
             )
           }
         />
         <Route
-          path="/call"
-          element={isAuthenticated ? <CallPage /> : <Navigate to={"/login"} />}
+          path="/call/:id"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <CallPage />
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/chat/:id"
           element={
             isAuthenticated && isOnboarded ? (
               <Layout showSidebar={false}>
-                <ChatPage/>
+                <ChatPage />
               </Layout>
-            ):(
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"}/>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
             )
           }
         />

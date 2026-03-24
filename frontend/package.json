@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stream-io/video-react-sdk": "^1.34.0",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-query": "^5.91.2",
     "axios": "^1.13.6",
+    "finalyearprojects": "file:..",
     "lucide-react": "^0.577.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

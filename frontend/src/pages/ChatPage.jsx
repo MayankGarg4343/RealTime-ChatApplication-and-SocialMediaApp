@@ -51,7 +51,7 @@ const ChatPage = () => {
             name: authUser.fullName,
             image: authUser.profilePic,
           },
-          tokenData.token
+          tokenData.token,
         );
 
         //
