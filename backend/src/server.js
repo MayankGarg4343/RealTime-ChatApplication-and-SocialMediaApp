@@ -13,12 +13,12 @@ import { connectDB } from "./lib/db.js";
 dotenv.config(); // we have to eable this method to read the properties.
 
 const app = express()
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
 
 const __dirname = path.resolve();
 
 app.use(cors({
-  origin:"*",
+  origin:"http://localhost:5173",
   credentials: true // allow frontened to send the cookies.
 }));
 app.use(express.json()); // if we do not write this then values in the route may be defined undefined.
